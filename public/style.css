@@ -1431,7 +1431,7 @@ table {
   width: 150px;
   height: 50px;
   margin-right: 301px;
-  margin-top: 10px;
+ 
 }
 #review_li{
   width: 450px;
@@ -1442,11 +1442,14 @@ table {
   overflow: scroll;
 }
 .approved{
-  background-color: rgb(214, 243, 214);
+  background-color: #bcbcbc;
   width: 70px;
-  height: 30px;
+  height: 40px;
   padding: 3px;
   margin-left: 10px;
+}
+.non_approved_hide{
+  display: none;
 }
 .non_approved{
   width: 400px;
@@ -1755,6 +1758,11 @@ table {
   height: 0px;
   overflow: hidden;
 }
+.marcked{
+  margin-top: 40px;
+  height: 90px;
+  border: 2px solid #eaeaea;
+}
 #send_button{
   display: block;
   width: 180px;
@@ -1813,6 +1821,28 @@ table {
   justify-content: space-between;
   margin-top: 30px;
   margin-bottom: 59px;
+  height: 500px;
+}
+.checkout_buttonHide{
+  margin-bottom: 0px;
+  height: 0px;
+  overflow: hidden;
+}
+#passwordIncorr{
+  margin-top: 40px;
+  height: 70px;
+  width: 180px;
+  border: 2px solid #eaeaea;
+  display: none;
+  text-align: center;
+
+}
+.checkout_form_2 {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+  margin-bottom: 59px;
+  height: 520px;
 }
 .checkout_forms{
   margin-bottom: 100px;
@@ -1847,6 +1877,7 @@ table {
   display: flex;
   flex-direction: column;
   margin-left: 40px;
+  margin-top: 40px;
 }
 .checkout_right_button {
   margin-left: 40px;
@@ -1861,6 +1892,37 @@ table {
   border: 1px solid #eaeaea;
   margin-bottom: 47px;
 }
+#shipping_checkout_repeat {
+  color: #b1b1b1;
+  font-size: 13px;
+  font-weight: 300;
+  padding-left: 18px;
+  width: 372px;
+  height: 45px;
+  border: 1px solid #eaeaea;
+  margin-bottom: 47px;
+}
+#userName {
+  color: #b1b1b1;
+  font-size: 13px;
+  font-weight: 300;
+  padding-left: 18px;
+  width: 372px;
+  height: 45px;
+  border: 1px solid #eaeaea;
+  margin-bottom: 47px;
+}
+#password {
+  color: #b1b1b1;
+  font-size: 13px;
+  font-weight: 300;
+  padding-left: 18px;
+  width: 372px;
+  height: 45px;
+  border: 1px solid #eaeaea;
+  margin-bottom: 47px;
+}
+
 #email_adress {
   color: #b1b1b1;
   font-size: 13px;
@@ -1923,6 +1985,7 @@ table {
 .button_Fpassword a:hover {
   border-bottom: 1px solid #f16d7f;
 }
+
 #name{
   color: #222222;
   font-size: 16px;
@@ -2004,9 +2067,7 @@ table {
 .checkout_drop {
   display: none;
 }
-.checkout_form_1_left{
-  margin-top: 67px;
-}
+
 .checkout_form_3 {
   margin-top: 33px;
   margin-bottom: 33px;

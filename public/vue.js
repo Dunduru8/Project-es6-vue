@@ -97,7 +97,7 @@ Vue.component("cart_item", {
 
   });
 
-  Vue.component("cart_drop_list", {
+Vue.component("cart_drop_list", {
    props: ["drop"],
    
    template: `<div>

@@ -27,6 +27,73 @@ app.get("/cart", (req, res) => {
      });
 });
 
+app.get("/related", (req, res) => {
+    fs.readFile("./db/related.json", "utf-8", (err, data) => {
+        if(err) {
+            return console.log(err)
+        }
+        res.send(data);
+     });
+});
+
+app.get("/users", (req, res) => {
+    fs.readFile("./db/users.json", "utf-8", (err, data) => {
+        if(err) {
+            return console.log(err)
+        }
+        res.send(data);
+        console.log(data);
+     });
+});
+
+app.post("/users", (req, res) => {
+    fs.readFile("./db/users.json", "utf-8", (err, data) => {
+        if(err) {
+            return console.log(err)
+        }
+    const users = JSON.parse(data);
+    
+    users.push(req.body);
+    console.log(req.body);
+
+    fs.writeFile("./db/users.json", JSON.stringify(users), (err) => {
+        if(err) {
+            return console.log(err);
+        }
+        res.send(req.body["user"]);
+    })
+    });
+}); 
+
+app.get("/reviews", (req, res) => {
+    fs.readFile("./db/reviews.json", "utf-8", (err, data) => {
+        if(err) {
+            return console.log(err)
+        }
+        res.send(data);
+       
+     });
+});
+app.post("/reviews", (req, res) => {
+    fs.readFile("./db/reviews.json", "utf-8", (err, data) => {
+        if(err) {
+            return console.log(err)
+        }
+    const reviews = JSON.parse(data);
+    
+    reviews.push(req.body);
+    console.log(req.body);
+
+    fs.writeFile("./db/reviews.json", JSON.stringify(reviews), (err) => {
+        if(err) {
+            return console.log(err);
+        }
+        res.send(req.body);
+    })
+    });
+}); 
+
+
 app.use ( "/cart", (req, res, next) => {                        //перехватываем все запросы, идущие к козрине, 
     if(["POST", "PATCH", "DELETE"].includes(req.method)){      //проверяем что это один из необходимых методов
     const mapping = {

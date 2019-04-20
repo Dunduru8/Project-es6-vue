@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.7/css/swiper.min.css" rel="stylesheet">
+    <!-- Include the Swiper library--> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.7/js/swiper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <!-- Swiper JS Vue -->
+    <script src="https://cdn.jsdelivr.net/npm/vue-awesome-swiper@3.1.2/dist/vue-awesome-swiper.js"></script>
+ 
+    
+
+</head> 
+<body>
+   <div class="content" id = "vue" >
+     <div class="top">
+       <header class="header">
+         <div class="container header-flex"> 
+            <div class= "header-left">
+              <a class = "logo" href="index.html"><img class= "logoe-img" src="https://student-geekbrains.000webhostapp.com/img/Logo.png" alt="logo">BRAN<span class= "logo_d">D</span></a>
+              <form class = "header_form" action="">
+                <div class= "browse">Browse<img class="arrow_brws" src="https://student-geekbrains.000webhostapp.com/img/hover_brws.png" alt="arrow">
+                  <div class= "drop_dow">
+                    <div class= "drop_flex">
+                       <h3 class= "drop_heading">Women</h3>
+                       <ul class="drop_menu">
+                         <li><a class= "drop_link" href="#">Dresses</a></li>
+                         <li><a class= "drop_link" href="#">Tops</a></li>
+                         <li><a class= "drop_link" href="#">Sweaters/Knits</a></li>
+                         <li><a class= "drop_link" href="#">Jackets/Coats</a></li>
+                         <li><a class= "drop_link" href="#">Blazers</a></li>
+                         <li><a class= "drop_link" href="#">Denim</a></li>
+                         <li><a class= "drop_link" href="#">Leggings/Pants</a></li>
+                         <li><a class= "drop_link" href="#">Skirts/Shorts</a></li>
+                         <li><a class= "drop_link" href="#">Accessories</a></li> 
+ 
+                       </ul>   
+                    </div>
+                    <div class= "drop_flex">
+                       <h3 class= "drop_heading">man</h3>
+                       <ul class="drop_menu">
+                         <li><a class= "drop_link" href="#">Tees/Tank tops</a></li>
+                         <li><a class= "drop_link" href="#">Shirts/Polos</a></li>
+                         <li><a class= "drop_link" href="#">Sweaters</a></li>
+                         <li><a class= "drop_link" href="#">Sweatshirts/Hoodies</a></li>
+                         <li><a class= "drop_link" href="#">Blazers</a></li>
+                         <li><a class= "drop_link" href="#">Jackets/vests</a></li>
+                       </ul> 
+                    </div>
+                  </div>
+                </div>
+                <input type="text" placeholder="Search for Item..." id= "search">
+                <button type ="submit" id= "submit"><img src="https://student-geekbrains.000webhostapp.com/img/search.png" alt="search"></button>
+              </form>
+           </div>
+           <div class= "header-right">
+                <div class= "drop_cart" id = "cart">
+                  <a href="cart.html"><img class="anim-cart" src="https://student-geekbrains.000webhostapp.com/img/cart.svg" alt="cart" id="cart"></a>
+                   
+                  <div class="drop_down_cart">
+                     
+                      <cart_drop_list :drop="cart" @ondel="handleDeleteClick"></cart_drop_list>
+                        
+                        
+                        <div class= "checkout">
+                            <a href="Checkout.html">checkout</a>
+                        </div>
+                        <div class= "go_cart">
+                            <a href="Cart.html">Go to cart</a>
+                        </div>
+                    </div>
+
+                </div> 
+             <a href="#" class= "button">My Account<img class="whtite" src="https://student-geekbrains.000webhostapp.com/img/hover_white.png" alt="arrow"></a> 
+           </div>
+         </div>
+      </header>
+        <nav class="navigation">
+            <div class= "container">
+               <div class= "border-bottom_red">
+              <ul class= "menu_header_top">
+               <li class= "menu_list">
+                 <a class= "menu_link" href="index.html">Home</a>
+               </li>
+                 <li class= "menu_list">
+                  <a class= "menu_link" href="Index.html">Man</a>
+                  <div class= "drop_box">
+                   <div class= "drop_flex">
+                      <h3 class= "drop_heading">Women</h3>
+                      <ul class="drop_menu">
+                        <li><a class= "drop_link" href="#">Dresses</a></li>
+                        <li><a class= "drop_link" href="#">Tops</a></li>
+                        <li><a class= "drop_link" href="#">Sweaters/Knits</a></li>
+                        <li><a class= "drop_link" href="#">Jackets/Coats</a></li>
+                        <li><a class= "drop_link" href="#">Blazers</a></li>
+                        <li><a class= "drop_link" href="#">Denim</a></li>
+                        <li><a class= "drop_link" href="#">Leggings/Pants</a></li>
+                        <li><a class= "drop_link" href="#">Skirts/Shorts</a></li>
+                        <li><a class= "drop_link" href="#">Accessories</a></li> 
+
+                      </ul>   
+                   </div>
+                   <div class= "drop_flex">
+                      <h3 class= "drop_heading">Women</h3>
+                      <ul class="drop_menu">
+                        <li><a class= "drop_link" href="#">Dresses</a></li>
+                        <li><a class= "drop_link" href="#">Tops</a></li>
+                        <li><a class= "drop_link" href="#">Sweaters/Knits</a></li>
+                        <li><a class= "drop_link" href="#">Jackets/Coats</a></li>
+                      </ul> 
+                        <h3 class= "drop_heading_2">Women</h3>
+                      <ul class="drop_menu">
+                        <li><a class= "drop_link" href="#">Dresses</a></li>
+                        <li><a class= "drop_link" href="#">Tops</a></li>
+                        <li><a class= "drop_link" href="#">Sweaters/Knits</a></li>
+                      </ul> 
+                   </div>
+                   <div class= "drop_flex">
+                      <h3 class= "drop_heading">Women</h3>
+                      <ul class="drop_menu">
+                        <li><a class= "drop_link" href="#">Dresses</a></li>
+                        <li><a class= "drop_link" href="#">Tops</a></li>
+                        <li><a class= "drop_link" href="#">Sweaters/Knits</a></li>
+                        <li><a class= "drop_link" href="#">Jackets/Coats</a></li>
+                      </ul> 
+                       <div class= "promotion">
+                        <div class= "super_sale">
+                          <img src="https://student-geekbrains.000webhostapp.com/img/Sale.png" alt="sale">
+                        </div>
+                        <div class= "super_sale_text">
+                           <a href="#"><p>super <br> sale!</p></a>
+                        </div> 
+                      </div>
+                      </div>
+               </div>
+                </li>
+               <li class= "menu_list">
+                  <a class= "menu_link" href="#">Women</a>
+                  <div class= "drop_box">
+                   <div class= "drop_flex">
+                      <h3 class= "drop_heading">Women</h3>
+                      <ul class="drop_menu">
+                        <li><a class= "drop_link" href="#">Dresses</a></li>
+                        <li><a class= "drop_link" href="#">Tops</a></li>
+                        <li><a class= "drop_link" href="#">Sweaters/Knits</a></li>
+                        <li><a class= "drop_link" href="#">Jackets/Coats</a></li>
+                        <li><a class= "drop_link" href="#">Blazers</a></li>
+                        <li><a class= "drop_link" href="#">Denim</a></li>
+                        <li><a class= "drop_link" href="#">Leggings/Pants</a></li>
+                        <li><a class= "drop_link" href="#">Skirts/Shorts</a></li>
+                        <li><a class= "drop_link" href="#">Accessories</a></li> 
+
+                      </ul>   
+                   </div>
+                   <div class= "drop_flex">
+                      <h3 class= "drop_heading">Women</h3>
+                      <ul class="drop_menu">
+                        <li><a class= "drop_link" href="#">Dresses</a></li>
+                        <li><a class= "drop_link" href="#">Tops</a></li>
+                        <li><a class= "drop_link" href="#">Sweaters/Knits</a></li>
+                        <li><a class= "drop_link" href="#">Jackets/Coats</a></li>
+                      </ul> 
+                        <h3 class= "drop_heading_2">Women</h3>
+                      <ul class="drop_menu">
+                        <li><a class= "drop_link" href="#">Dresses</a></li>
+                        <li><a class= "drop_link" href="#">Tops</a></li>
+                        <li><a class= "drop_link" href="#">Sweaters/Knits</a></li>
+                      </ul> 
+                   </div>
+                   <div class= "drop_flex">
+                      <h3 class= "drop_heading">Women</h3>
+                      <ul class="drop_menu">
+                        <li><a class= "drop_link" href="#">Dresses</a></li>
+                        <li><a class= "drop_link" href="#">Tops</a></li>
+                        <li><a class= "drop_link" href="#">Sweaters/Knits</a></li>
+                        <li><a class= "drop_link" href="#">Jackets/Coats</a></li>
+                      </ul> 
+                       <div class= "promotion">
+                        <div class= "super_sale">
+                          <img src="https://student-geekbrains.000webhostapp.com/img/Sale.png" alt="sale">
+                        </div>
+                        <div class= "super_sale_text">
+                           <a href="#"><p>super <br> sale!</p></a>
+                        </div> 
+                      </div>
+                      </div>
+               </div>
+               </li>
+               <li class= "menu_list">
+                  <a class= "menu_link" href="#">Kids</a>
+                  <div class= "drop_box">
+                   <div class= "drop_flex">
+                      <h3 class= "drop_heading">Women</h3>
+                      <ul class="drop_menu">
+                        <li><a class= "drop_link" href="#">Dresses</a></li>
+                        <li><a class= "drop_link" href="#">Tops</a></li>
+                        <li><a class= "drop_link" href="#">Sweaters/Knits</a></li>
+                        <li><a class= "drop_link" href="#">Jackets/Coats</a></li>
+                        <li><a class= "drop_link" href="#">Blazers</a></li>
+                        <li><a class= "drop_link" href="#">Denim</a></li>
+                        <li><a class= "drop_link" href="#">Leggings/Pants</a></li>
+                        <li><a class= "drop_link" href="#">Skirts/Shorts</a></li>
+                        <li><a class= "drop_link" href="#">Accessories</a></li> 
+
+                      </ul>   
+                   </div>
+                   <div class= "drop_flex">
+                      <h3 class= "drop_heading">Women</h3>
+                      <ul class="drop_menu">
+                        <li><a class= "drop_link" href="#">Dresses</a></li>
+                        <li><a class= "drop_link" href="#">Tops</a></li>
+                        <li><a class= "drop_link" href="#">Sweaters/Knits</a></li>
+                        <li><a class= "drop_link" href="#">Jackets/Coats</a></li>
+                      </ul> 
+                        <h3 class= "drop_heading_2">Women</h3>
+                      <ul class="drop_menu">
+                        <li><a class= "drop_link" href="#">Dresses</a></li>
+                        <li><a class= "drop_link" href="#">Tops</a></li>
+                        <li><a class= "drop_link" href="#">Sweaters/Knits</a></li>
+                      </ul> 
+                   </div>
+                   <div class= "drop_flex">
+                      <h3 class= "drop_heading">Women</h3>
+                      <ul class="drop_menu">
+                        <li><a class= "drop_link" href="#">Dresses</a></li>
+                        <li><a class= "drop_link" href="#">Tops</a></li>
+                        <li><a class= "drop_link" href="#">Sweaters/Knits</a></li>
+                        <li><a class= "drop_link" href="#">Jackets/Coats</a></li>
+                      </ul> 
+                       <div class= "promotion">
+                        <div class= "super_sale">
+                          <img src="https://student-geekbrains.000webhostapp.com/img/Sale.png" alt="sale">
+                        </div>
+                        <div class= "super_sale_text">
+                           <a href="#"><p>super <br> sale!</p></a>
+                        </div> 
+                      </div>
+                      </div>
+               </div>
+               </li>
+               <li class= "menu_list">
+                  <a class= "menu_link" href="#">Accoseriese</a>
+                  <div class= "drop_box">
+                   <div class= "drop_flex">
+                      <h3 class= "drop_heading">Women</h3>
+                      <ul class="drop_menu">
+                        <li><a class= "drop_link" href="#">Dresses</a></li>
+                        <li><a class= "drop_link" href="#">Tops</a></li>
+                        <li><a class= "drop_link" href="#">Sweaters/Knits</a></li>
+                        <li><a class= "drop_link" href="#">Jackets/Coats</a></li>
+                        <li><a class= "drop_link" href="#">Blazers</a></li>
+                        <li><a class= "drop_link" href="#">Denim</a></li>
+                        <li><a class= "drop_link" href="#">Leggings/Pants</a></li>
+                        <li><a class= "drop_link" href="#">Skirts/Shorts</a></li>
+                        <li><a class= "drop_link" href="#">Accessories</a></li> 
+
+                      </ul>   
+                   </div>
+                   <div class= "drop_flex">
+                      <h3 class= "drop_heading">Women</h3>
+                      <ul class="drop_menu">
+                        <li><a class= "drop_link" href="#">Dresses</a></li>
+                        <li><a class= "drop_link" href="#">Tops</a></li>
+                        <li><a class= "drop_link" href="#">Sweaters/Knits</a></li>
+                        <li><a class= "drop_link" href="#">Jackets/Coats</a></li>
+                      </ul> 
+                        <h3 class= "drop_heading_2">Women</h3>
+                      <ul class="drop_menu">
+                        <li><a class= "drop_link" href="#">Dresses</a></li>
+                        <li><a class= "drop_link" href="#">Tops</a></li>
+                        <li><a class= "drop_link" href="#">Sweaters/Knits</a></li>
+                      </ul> 
+                   </div>
+                   <div class= "drop_flex">
+                      <h3 class= "drop_heading">Women</h3>
+                      <ul class="drop_menu">
+                        <li><a class= "drop_link" href="#">Dresses</a></li>
+                        <li><a class= "drop_link" href="#">Tops</a></li>
+                        <li><a class= "drop_link" href="#">Sweaters/Knits</a></li>
+                        <li><a class= "drop_link" href="#">Jackets/Coats</a></li>
+                      </ul> 
+                       <div class= "promotion">
+                        <div class= "super_sale">
+                          <img src="https://student-geekbrains.000webhostapp.com/img/Sale.png" alt="sale">
+                        </div>
+                        <div class= "super_sale_text">
+                           <a href="#"><p>super <br> sale!</p></a>
+                        </div> 
+                      </div>
+                      </div>
+               </div>
+               </li>
+               <li class= "menu_list">
+                  <a class= "menu_link" href="#">Featured</a>
+                  <div class= "drop_box">
+                   <div class= "drop_flex">
+                      <h3 class= "drop_heading">Women</h3>
+                      <ul class="drop_menu">
+                        <li><a class= "drop_link" href="#">Dresses</a></li>
+                        <li><a class= "drop_link" href="#">Tops</a></li>
+                        <li><a class= "drop_link" href="#">Sweaters/Knits</a></li>
+                        <li><a class= "drop_link" href="#">Jackets/Coats</a></li>
+                        <li><a class= "drop_link" href="#">Blazers</a></li>
+                        <li><a class= "drop_link" href="#">Denim</a></li>
+                        <li><a class= "drop_link" href="#">Leggings/Pants</a></li>
+                        <li><a class= "drop_link" href="#">Skirts/Shorts</a></li>
+                        <li><a class= "drop_link" href="#">Accessories</a></li> 
+
+                      </ul>   
+                   </div>
+                   <div class= "drop_flex">
+                      <h3 class= "drop_heading">Women</h3>
+                      <ul class="drop_menu">
+                        <li><a class= "drop_link" href="#">Dresses</a></li>
+                        <li><a class= "drop_link" href="#">Tops</a></li>
+                        <li><a class= "drop_link" href="#">Sweaters/Knits</a></li>
+                        <li><a class= "drop_link" href="#">Jackets/Coats</a></li>
+                      </ul> 
+                        <h3 class= "drop_heading_2">Women</h3>
+                      <ul class="drop_menu">
+                        <li><a class= "drop_link" href="#">Dresses</a></li>
+                        <li><a class= "drop_link" href="#">Tops</a></li>
+                        <li><a class= "drop_link" href="#">Sweaters/Knits</a></li>
+                      </ul> 
+                   </div>
+                   <div class= "drop_flex">
+                      <h3 class= "drop_heading">Women</h3>
+                      <ul class="drop_menu">
+                        <li><a class= "drop_link" href="#">Dresses</a></li>
+                        <li><a class= "drop_link" href="#">Tops</a></li>
+                        <li><a class= "drop_link" href="#">Sweaters/Knits</a></li>
+                        <li><a class= "drop_link" href="#">Jackets/Coats</a></li>
+                      </ul> 
+                       <div class= "promotion">
+                        <div class= "super_sale">
+                          <img src="https://student-geekbrains.000webhostapp.com/img/Sale.png" alt="sale">
+                        </div>
+                        <div class= "super_sale_text">
+                           <a href="#"><p>super <br> sale!</p></a>
+                        </div> 
+                      </div>
+                      </div>
+               </div>
+               </li>
+               <li class= "menu_list">
+                  <a class= "menu_link" href="#">Hot Deals</a>
+                  <div class= "drop_box">
+                   <div class= "drop_flex">
+                      <h3 class= "drop_heading">Women</h3>
+                      <ul class="drop_menu">
+                        <li><a class= "drop_link" href="#">Dresses</a></li>
+                        <li><a class= "drop_link" href="#">Tops</a></li>
+                        <li><a class= "drop_link" href="#">Sweaters/Knits</a></li>
+                        <li><a class= "drop_link" href="#">Jackets/Coats</a></li>
+                        <li><a class= "drop_link" href="#">Blazers</a></li>
+                        <li><a class= "drop_link" href="#">Denim</a></li>
+                        <li><a class= "drop_link" href="#">Leggings/Pants</a></li>
+                        <li><a class= "drop_link" href="#">Skirts/Shorts</a></li>
+                        <li><a class= "drop_link" href="#">Accessories</a></li> 
+
+                      </ul>   
+                   </div>
+                   <div class= "drop_flex">
+                      <h3 class= "drop_heading">Women</h3>
+                      <ul class="drop_menu">
+                        <li><a class= "drop_link" href="#">Dresses</a></li>
+                        <li><a class= "drop_link" href="#">Tops</a></li>
+                        <li><a class= "drop_link" href="#">Sweaters/Knits</a></li>
+                        <li><a class= "drop_link" href="#">Jackets/Coats</a></li>
+                      </ul> 
+                        <h3 class= "drop_heading_2">Women</h3>
+                      <ul class="drop_menu">
+                        <li><a class= "drop_link" href="#">Dresses</a></li>
+                        <li><a class= "drop_link" href="#">Tops</a></li>
+                        <li><a class= "drop_link" href="#">Sweaters/Knits</a></li>
+                      </ul> 
+                   </div>
+                   <div class= "drop_flex">
+                      <h3 class= "drop_heading">Women</h3>
+                      <ul class="drop_menu">
+                        <li><a class= "drop_link" href="#">Dresses</a></li>
+                        <li><a class= "drop_link" href="#">Tops</a></li>
+                        <li><a class= "drop_link" href="#">Sweaters/Knits</a></li>
+                        <li><a class= "drop_link" href="#">Jackets/Coats</a></li>
+                      </ul> 
+                       <div class= "promotion">
+                        <div class= "super_sale">
+                          <img src="https://student-geekbrains.000webhostapp.com/img/Sale.png" alt="sale">
+                        </div>
+                        <div class= "super_sale_text">
+                           <a href="#"><p>super <br> sale!</p></a>
+                        </div> 
+                      </div>
+                      </div>
+               </div>
+               </li>                 
+            </ul>
+               </div>
+            </div>
+            
+        </nav>  
+      <nav class= "produckt_nav">
+           <div class= "container breadCrumbs_nav">
+             <h3 class="product_nav_text">New Arrivals</h3>
+                <nav class= "breadCrumbs">
+                   <a href="index.html">Home /</a>
+                    <a href="#">Men /</a>
+                    <a href="#">New Arrivals /</a>
+               </nav>
+           </div>
+      </nav>
+      <div class= "sing_item_bckgr">
+        <div class="next_prev">
+           
+           <a href="#"><img src="https://student-geekbrains.000webhostapp.com/img/Arrow_prev.png" alt="arrow"></a>
+            <div class="container singl_item_img"><img src="https://student-geekbrains.000webhostapp.com/img/Product_single_item_women_1.jpg" alt="item">
+            
+             <div class="singl_item_descr">
+                <div class="singl_item_text">
+                    <h3 class="singl_item_cap">WOMEN COLLECTION</h3>
+                    <h3 class="singl_item_tex_descr">Moschino Cheap And Chic</h3>
+                    <img src="https://student-geekbrains.000webhostapp.com/img/stars.jpg" alt="stars">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam harum quisquam enim? Ipsa quae impedit quasi, reprehenderit nam sequi error natus atque temporibus facilis consectetur, saepe doloribus veniam magnam, debitis.</p>
+                </div>
+                <div class="material">
+                    <h4>material:</h4><h5>cotton</h5>
+                    <h4>DESIGNER:</h4><h5>BINBURHAN</h5>
+                </div>
+                <div class="singl_price">$561</div>
+                  <div class="choose_options">
+                    <div class="choose_color">
+                     <div class="color">CHOOSE COLOR</div>
+                        <div class="color_datalist">
+                           <input list="color" id="choose"/>
+                         <datalist id="color">
+                             <option value="red">
+                             <option value="green">
+                             <option value="blue">
+                         </datalist>
+                         </div>
+                      </div>
+                      <div class="choose_size">
+                         <div class="choose_size_text">CHOOSE COLOR</div>
+                        <div class="color_datalist">
+                        <input list="size" id="choose"/>
+                         <datalist id="size">
+                             <option value="XXS">
+                             <option value="XS">
+                             <option value="S">
+                             <option value="M">
+                             <option value="L">
+                             <option value="XL">
+                         </datalist>
+                         </div>
+                      </div>
+                      <div class="choose_quantity">
+                         <div class="choose_quantity_text">QUANTITY</div>
+                        <div class="quantity_datalist">
+                           <input list="quantity" id="choose"/>
+                         <datalist id="quantity">
+                             <option value="1">
+                             <option value="2">
+                             <option value="3">
+                             <option value="4">
+                             <option value="5">
+                             <option value="6">
+                         </datalist>
+                         </div>
+                      </div>
+                   
+                  </div>
+                  <div class= "singl_ad_cart">
+                     <a href="#"><img src="https://student-geekbrains.000webhostapp.com/img/cart_red.svg" alt="cart_red"> 
+                     Add to Cart</a> 
+                  </div>
+                  
+             </div>
+         </div>
+        <a href="#"><img src="https://student-geekbrains.000webhostapp.com/img/Arrow_next.png" alt="arrow"></a>
+       </div> 
+      </div>
+      <div class="tempor"></div>
+      <div class="relative_text"><p>you may like also</p></div>
+
+      <div class="relativ_products ">
+        <div class= "container relative_items" id = "relative_items">
+             <!-- swiper -->
+             <swiper :options="swiperOption">
+             
+             <swiper-slide><img src="https://student-geekbrains.000webhostapp.com/img/Product_2.jpg" alt="img"></swiper-slide>
+             <swiper-slide><img src="https://student-geekbrains.000webhostapp.com/img/Product_women_3.jpg" alt="img"></swiper-slide>
+             <swiper-slide><img src="https://student-geekbrains.000webhostapp.com/img/Product_women_4.jpg" alt="img"></swiper-slide>
+             <swiper-slide><img src="https://student-geekbrains.000webhostapp.com/img/Product_10.jpg" alt="img"></swiper-slide>
+             <swiper-slide><img src="https://student-geekbrains.000webhostapp.com/img/Product_9.jpg" alt="img"></swiper-slide>
+             <div class="swiper-pagination" slot="pagination"></div>
+             <div class="swiper-button-prev" slot="button-prev"></div>
+             <div class="swiper-button-next" slot="button-next"></div>
+        
+
+        </swiper> 
+         
+          </div>
+         
+        
+      </div>
+
+      <div class= "subscibe_bckg">
+        <div class= "container subscibe">
+          <div class= "subcr_details">
+            <div class= "suscribe_left">
+              <div class= "subscr_text_left"><img src="https://student-geekbrains.000webhostapp.com/img/Subsc_right_img.png" alt="subscr_img" id="subcr_left_img">“Vestibulum quis porttitor dui! Quisque viverra nunc mi, 
+a pulvinar purus condimentum a. Aliquam condimentum mattis neque sed pretium”
+              </div>
+              <div class= "red_sbcr">Bin Burhan</div>
+              <div class= "subscr_text_left_down">Dhaka, Bd</div>
+            </div>
+            <div class= "subscribe_right">
+               <div class="subscr_right_text_apper">Subscribe</div>
+               <div class= "suscr_right_text_low">FOR OUR NEWLETTER AND PROMOTION
+               </div>
+               <form class = "subscr_form" action="#">
+                   <input type="email" placeholder=" Enter Your Email" id= "subscr">
+                   <button type ="submit" id= "subscr_button">Subscribe</button>
+               </form>
+            </div>
+           </div>
+    </div>      
+      </div>
+    </div> 
+    <footer>
+        <div class= "container footer_up">
+            <div class= "Footer_logo_text">
+               <a class = "logo" href="index.html"><img class= "logo-img" src="https://student-geekbrains.000webhostapp.com/img/Logo.png" alt="logo">BRAN<span class= "logo_d">D</span></a> 
+               <p>Objectively transition extensive data rather than cross functional solutions. Monotonectally syndicate multidisciplinary materials before go forward benefits. Intrinsicly syndicate an expanded array of processes and cross-unit <br>
+               Efficiently plagiarize 24/365 action items and focused infomediaries.
+               Distinctively seize superior initiatives for wireless technologies. Dynamically optimize.</p>
+            </div>
+            <nav class= "footer_nav">
+              <div class = "company"> 
+                <ul class= "footer_nav_list">
+                    <li><p>company</p></li>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#">Shop</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">How It Works</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+              </div> 
+             <div class="information">
+               <ul class= "footer_nav_list">
+                    <li><p>information</p></li>
+                    <li><a href="#">Tearms &amp; Condition</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">How to Buy</a></li>
+                    <li><a href="#">How to Sell</a></li>
+                    <li><a href="#">Promotion</a></li>
+                </ul>
+             </div> 
+              <div class= "shop_category">
+                <ul class= "footer_nav_list">
+                   <li><p>shop category</p></li>
+                    <li><a href="#">Men</a></li>
+                    <li><a href="#">Women</a></li>
+                    <li><a href="#">Child</a></li>
+                    <li><a href="#">Apparel</a></li>
+                    <li><a href="#">Brows All</a></li>
+                </ul>
+             </div> 
+            </nav>
+        </div>
+        <div class="footer_dow">
+          <div class= "container footer_down_text">
+           <p>&copy;&nbsp;2017 Brand All Rights Reserved.</p>
+          
+          <div class= "social_links">
+              <div class="facebook"><a href="#">f</a></div>
+              <div class="twit"><a href="#"><img src="https://student-geekbrains.000webhostapp.com/img/Twiter.png" alt="twit"></a></div>
+              <div class="in"><a href="#">in</a></div>
+              <div class="pin"><a href="#"><img class = "pin_a_img"src="https://student-geekbrains.000webhostapp.com/img/pinterest.svg" alt="pint"></a></div>
+              <div class="g"><a href="#">G+</a></div>
+              </div>
+          </div>
+        </div>
+        
+    </footer>
+    </div> 
+   
+    
+    <script src = "singl.js" ></script>        
+</body>
+</html>

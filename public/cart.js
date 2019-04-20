@@ -153,6 +153,18 @@ const app = new Vue({
             });
         }
     },
+    handleDeleteAllClick() {
+      cartDel = this.cart
+      cartDel.forEach(function(item){
+        fetch(`${API_URL}/cart/${item.id}`, {
+          method: "DELETE",
+          })
+          .then(() => {
+            this.cart = this.cart.filter((cartItem) => cartItem.id !== item.id);
+          });
+      });
+      
+      }
   }
   })
     
