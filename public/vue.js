@@ -23,7 +23,7 @@ Vue.component("catalog-item", {
     props: ["item"],
 
     template: `<div class = "featured_items_box">
-                 <a href = "#"><img v-bind:src = "item.img"></a>
+                 <a href = "Singl.html"><img v-bind:src = "item.img"></a>
                  <h2 class = "items_list_text">{{item.name}}</h2>
                  <p class = "items_list_price">{{item.price}}</p>
                  <div class = "add_tocard"><a href= "#" @click.prevent="handleBuyClick(item)">Add to card</a></div>
