@@ -71,9 +71,9 @@ const app = new Vue({
               {userName: $mail,
                password: $password 
               }
-            
-           document.getElementById("login").classList.add("checkout_buttonHide")
-           fetch(`${API_URL}/users`, {
+             document.getElementById("userOk").text = "Привет " + document.getElementById("name").value;
+             document.getElementById("login").style.display = "none";
+            fetch(`${API_URL}/users`, {
               method: "POST",
               headers: {
                 "Content-Type": "application/json",
@@ -81,11 +81,16 @@ const app = new Vue({
               body: JSON.stringify({userName: $mail,
                password: $password 
               }) 
-            })
+             })
               .then((response) => response.json())
               .then(() => {
                 this.users.push(user);
               });
+            fetch(`${API_URL}/reviews`)
+              .then(response => response.json()) 
+              .then((reviews) => {
+               this.reviews = reviews;
+              }); 
          }else{
            const $dialog = document.getElementById("dialog");
            $dialog.classList.add("marcked");
@@ -110,9 +115,15 @@ const app = new Vue({
              .then(() => {
                this.reviews.push(reviews);
              });
-        document.getElementById("review").value = "";
-         
-   
+            document.getElementById("review").value = "";
+            if(document.getElementById("userOk").text !== "My Account"){
+              fetch(`${API_URL}/reviews`)
+                    .then(response => response.json()) 
+                    .then((reviews) => {
+                     this.reviews = reviews;
+                    });
+            }
+
       },
 
       handleDeleteClick(item) {
@@ -151,25 +162,82 @@ const app = new Vue({
             .then(() => {
                const userLog =  this.users.findIndex(user => user.userName === userID.userName & user.password === userID.password)
                 if(userLog > -1){
-                    fetch(`${API_URL}/reviews`)
-                       .then(response => response.json())
-                       .then((reviews) => {
-                        this.reviews = reviews;
-                      });
+                  document.getElementById("userOk").text = "Привет " + $username;
+                  fetch(`${API_URL}/reviews`)
+                    .then(response => response.json()) 
+                    .then((reviews) => {
+                     this.reviews = reviews;
+                    });
+
                       document.getElementById("passwordIncorr").style.display = "";
-                      document.getElementById("userName").value = "";
-                      document.getElementById("password").value = "";
-                      document.getElementById("register").style.display = "none"
+                      document.getElementById("register").style.display = "none";
+                      
                 }else {
                   document.getElementById("passwordIncorr").style.display = "flex";
                 }
              });
           
+           },
+      handleApprovClick(item){
+         
+          let apprvButton = document.getElementsByClassName("approved");
+          if(item.appruved === "non approved"){
+            event.target.text = "approved"
+            
+            fetch(`${API_URL}/reviews/${item.text}`, {
+              method: "PATCH",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({ appruved: "approved" }),
+            })
+              .then((response) => response.json())
+              .then((item) => {
+                const itemIdx = this.reviews.findIndex((entry) => entry.text === item.text);
+                Vue.set(this.reviews, itemIdx, item);
+              });
            }
+        }
+
+          
       
      }
 
    });
+  Vue.component("review-item", {
+    props: ["item"],
+    template:
+            `<div>
+                 <div class="approved_div">
+                 <p class="reviews_p">{{item.text}}</p>
+                 <button class="approved" @click.prevent="handleApprovClick(item)">{{item.appruved}}</button>
+                 </div>
+              </div>`,
+   methods:{
+      handleApprovClick(item){
+        this.$emit("onAppr", item);
+      }
+     }           
+
+  });
+
+  Vue.component("reviews-list", {
+    props: ["drop"],
+     
+    template: `<div   id = "review_li" >
+                  <review-item v-for="entry in drop" :item="entry" @onAppr="handleApprovClick"></review-item> 
+                  
+               </div>`, 
+
+    
+
+    methods:{
+      handleApprovClick(item){
+        this.$emit("onappr", item);
+      }
+     }                      
+
+  })
 
   Vue.component("cart_item", {
     props: ["item"],

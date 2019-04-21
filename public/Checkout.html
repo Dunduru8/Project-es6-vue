@@ -69,7 +69,7 @@
                     </div>
                 </div>
              </div> 
-           <a href="#" class= "button">My Account<img class="whtite" src="https://student-geekbrains.000webhostapp.com/img/hover_white.png" alt="arrow"></a> 
+           <a href="#" class= "button" id="userOk">My Account<img class="whtite" src="https://student-geekbrains.000webhostapp.com/img/hover_white.png" alt="arrow"></a> 
          </div>
           </div>
         </header>
@@ -490,7 +490,7 @@
                         <div class="checkout_left_button">
                           <div id = "send_button" @click="handleSendClick" ><a href="#">Отправить</a>
 
-                           <div id = "dialog" title= "Attention" class = "checkout_buttonHide">Marked fields are incorrect</div>
+                           <div id = "dialog" title= "Attention" class = "buttonHide">Marked fields are incorrect</div>
 
                           </div>
                         </div>  
@@ -506,13 +506,7 @@
                       <p class = "review_p">Leave feedback</p>
                       <textarea id = "review" cols="55" rows="23"></textarea> 
                       
-                      <div id = "review_li">
-                        <div v-for="item in reviews"  class="approved_div">
-                        <p class="reviews_p">{{item.text}}</p>
-                        <button class="approved">{{item.appruved}}</button>
-                        <button class="non_approved_hide" id ="approvButton">Approve review</button>
-                        </div>
-                      </div>
+                      <reviews-list :drop ="reviews" @onappr="handleApprovClick"></reviews-list>
 
                       <button id = "review_send" @click = "handleSendReviewsClick">Send</button>
                      

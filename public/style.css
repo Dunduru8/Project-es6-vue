@@ -1290,7 +1290,7 @@ table {
   font-size: 14px;
   font-weight: 700;
   text-transform: uppercase;
-  line-height: 80px;
+  line-height: 50px;
   padding-left: 72px;
 }
 .singl_item_img {
@@ -1441,15 +1441,18 @@ table {
   padding: 20px;
   overflow: scroll;
 }
+
 .approved{
   background-color: #bcbcbc;
   width: 70px;
   height: 40px;
   padding: 3px;
   margin-left: 10px;
+  display: block;
 }
-.non_approved_hide{
-  display: none;
+.approved:hover {
+  box-shadow: 0 5px 8px rgba(0, 0, 0, 0.16);
+  transition: all 0.5s ease-in-out;
 }
 .non_approved{
   width: 400px;
@@ -1758,6 +1761,11 @@ table {
   height: 0px;
   overflow: hidden;
 }
+.buttonHide{
+  margin-bottom: 0px;
+  height: 0px;
+  overflow: hidden;
+}
 .marcked{
   margin-top: 40px;
   height: 90px;
@@ -1842,7 +1850,7 @@ table {
   justify-content: space-between;
   margin-top: 30px;
   margin-bottom: 59px;
-  height: 520px;
+  height: 850px;
 }
 .checkout_forms{
   margin-bottom: 100px;

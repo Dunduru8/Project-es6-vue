@@ -60,7 +60,7 @@ app.post("/users", (req, res) => {
         if(err) {
             return console.log(err);
         }
-        res.send(req.body["user"]);
+        res.send(req.body);
     })
     });
 }); 
@@ -82,7 +82,6 @@ app.post("/reviews", (req, res) => {
     const reviews = JSON.parse(data);
     
     reviews.push(req.body);
-    console.log(req.body);
 
     fs.writeFile("./db/reviews.json", JSON.stringify(reviews), (err) => {
         if(err) {
@@ -92,7 +91,28 @@ app.post("/reviews", (req, res) => {
     })
     });
 }); 
+app.patch("/reviews/:text", (req, res) => {
+    fs.readFile("./db/reviews.json", "utf-8", (err, data) => {    
+        if(err) {
+            return console.log(err)
+        }
+    let reviews = JSON.parse(data);            
+    
+    reviews = reviews.map((item) => {
+        if(item.text === req.params.text) {
+           return {...item, ...req.body};
+        }
+        return item;
+       });
 
+    fs.writeFile("./db/reviews.json", JSON.stringify(reviews), (err) => {
+        if(err) {
+            return console.log(err);
+        }
+        res.send(reviews.find((item) => item.text === req.params.text)); 
+    })
+    });
+});
 
 app.use ( "/cart", (req, res, next) => {                        //перехватываем все запросы, идущие к козрине, 
     if(["POST", "PATCH", "DELETE"].includes(req.method)){      //проверяем что это один из необходимых методов
